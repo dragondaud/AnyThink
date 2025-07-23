@@ -53,7 +53,7 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(TOUCH_PIN_4), handle_4, RISING);
 
   // Small delay for stability
-  delay(50);
+  delay(100);
 
   showDefaultPattern();
 }
@@ -101,5 +101,6 @@ void showDefaultPattern() {
   fill_solid(leds + (splitCount * 2), splitCount, COLOR_YELLOW);
   fill_solid(leds + (splitCount * 3), splitCount, COLOR_GREEN);
   fill_solid(leds + (splitCount * 4), splitCount, COLOR_BLUE);
+  FastLED.show();
   Serial.println("Show Default Pattern");
 }
