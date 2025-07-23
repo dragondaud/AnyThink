@@ -1,8 +1,10 @@
 #include <FastLED.h>
 
-#define LED_PIN 6       // D6 (PA07) for WS2812 LEDs
-#define LED_COUNT 60    // Total number of LEDs
-#define BRIGHTNESS 100  // Adjust as needed (0-255)
+#define LED_PIN 6         // D6 (PA07) for WS2812 LEDs
+#define LED_COUNT 50      // Total number of LEDs
+#define BRIGHTNESS 100    // Adjust as needed (0-255)
+#define LED_TYPE WS2812B  // Type of LED pixels
+#define COLOR_ORDER GRB   // Color order
 
 // Input pins
 #define TOUCH_PIN_0 0  // D0 (PA02)
@@ -22,15 +24,16 @@ const CRGB COLOR_RED = CRGB(204, 0, 0);        // RGB: (204, 0, 0) - More satura
 const CRGB COLOR_YELLOW = CRGB(255, 255, 51);  // RGB: (255, 255, 51) - Much more saturated yellow
 const CRGB COLOR_VIOLET = CRGB(128, 0, 255);   // RGB: (128, 0, 255) - More saturated violet
 
+CRGB Color, lastColor;
 
 void setup() {
-  //Initialize serial and wait for port to open:
+  //Initialize serial and wait for port to open
   Serial.begin(9600);
   while (!Serial) { delay(250); }
   Serial.println("myMoodlight Serial Open");
 
   // Initialize FastLED
-  FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, LED_COUNT);
+  FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, LED_COUNT);
   FastLED.setBrightness(BRIGHTNESS);
   FastLED.clear();
   FastLED.show();
@@ -42,58 +45,61 @@ void setup() {
   pinMode(TOUCH_PIN_3, INPUT);
   pinMode(TOUCH_PIN_4, INPUT);
 
+  // configure interrupts
+  attachInterrupt(digitalPinToInterrupt(TOUCH_PIN_0), handle_0, RISING);
+  attachInterrupt(digitalPinToInterrupt(TOUCH_PIN_1), handle_1, RISING);
+  attachInterrupt(digitalPinToInterrupt(TOUCH_PIN_2), handle_2, RISING);
+  attachInterrupt(digitalPinToInterrupt(TOUCH_PIN_3), handle_3, RISING);
+  attachInterrupt(digitalPinToInterrupt(TOUCH_PIN_4), handle_4, RISING);
+
   // Small delay for stability
   delay(50);
 
   showDefaultPattern();
 }
 
+void handle_0() {
+  Color = COLOR_YELLOW;
+}
+
+void handle_1() {
+  Color = COLOR_VIOLET;
+}
+
+void handle_2() {
+  Color = COLOR_RED;
+}
+
+void handle_3() {
+  Color = COLOR_GREEN;
+}
+
+void handle_4() {
+  Color = COLOR_BLUE;
+}
+
 void loop() {
-  // Check touch sensors
-  if (digitalRead(TOUCH_PIN_0) == HIGH) {
-    // All LEDs green
-    fill_solid(leds, LED_COUNT, COLOR_YELLOW);
-    Serial.println("Touch0");
-  } else if (digitalRead(TOUCH_PIN_1) == HIGH) {
-    // All LEDs blue
-    fill_solid(leds, LED_COUNT, COLOR_VIOLET);
-    Serial.println("Touch1");
-  } else if (digitalRead(TOUCH_PIN_2) == HIGH) {
-    // All LEDs red
-    fill_solid(leds, LED_COUNT, COLOR_RED);
-    Serial.println("Touch2");
-  } else if (digitalRead(TOUCH_PIN_3) == HIGH) {
-    // All LEDs yellow
-    fill_solid(leds, LED_COUNT, COLOR_GREEN);
-    Serial.println("Touch3");
-  } else if (digitalRead(TOUCH_PIN_4) == HIGH) {
-    // All LEDs violet
-    fill_solid(leds, LED_COUNT, COLOR_BLUE);
-    Serial.println("Touch4");
+  if (Color != lastColor) {
+    lastColor = Color;
+    uint8_t r = Color.r;
+    uint8_t g = Color.g;
+    uint8_t b = Color.b;
+    char hexString[7];
+    sprintf(hexString, "%02X%02X%02X", r, g, b);
+    Serial.println(hexString);
+    fill_solid(leds, LED_COUNT, Color);
+    FastLED.show();
   }
 
-  // Update the LEDs
-  FastLED.show();
-
-  // Small delay to prevent flickering
   delay(50);
 }
 
 void showDefaultPattern() {
-  // First 10 LEDs green (0-9)
-  fill_solid(leds, 14, COLOR_RED);
-
-  // 11th to 20th blue (10-19)
-  fill_solid(leds + 14, 5, COLOR_VIOLET);
-
-  // 20th to 25th red (20-24)
-  fill_solid(leds + 19, 14, COLOR_YELLOW);
-
-  // 25th to 40th yellow (25-39)
-  fill_solid(leds + 33, 12, COLOR_GREEN);
-
-  // 40th to 60th violet (40-59)
-  fill_solid(leds + 45, 15, COLOR_BLUE);
-
+  int splitCount = LED_COUNT / 5;
+  fill_solid(leds, splitCount, COLOR_RED);
+  fill_solid(leds + (splitCount * 1), splitCount, COLOR_VIOLET);
+  fill_solid(leds + (splitCount * 2), splitCount, COLOR_YELLOW);
+  fill_solid(leds + (splitCount * 3), splitCount, COLOR_GREEN);
+  fill_solid(leds + (splitCount * 4), splitCount, COLOR_BLUE);
   Serial.println("Show Default Pattern");
 }
