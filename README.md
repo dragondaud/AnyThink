@@ -11,3 +11,5 @@ and FastLED library from https://github.com/FastLED/FastLED
 
 Uses https://wiki.seeedstudio.com/Seeeduino-XIAO/ microcontroller  
 Board manager URL: https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json  
+
+<img title="Soldering" alt="Soldering Diagram" src="soldering.png">
