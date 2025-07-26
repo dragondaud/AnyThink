@@ -38,7 +38,7 @@ void setup() {
   // Initialize serial and wait for port to open
   // https://docs.arduino.cc/language-reference/en/functions/communication/serial/
   Serial.begin(9600);
-  while (!Serial) { delay(250); }  // wait for serial port to initialize
+  delay(250);  // wait for serial port to initialize
   Serial.println("myMoodlight Serial Open");
 
   // Initialize FastLED library
@@ -97,7 +97,10 @@ void loop() {
   // If selected Color has changed, update led display, remember selection
   if (Color != lastColor) {
     lastColor = Color;
-    Serial.println(Color);
+    uint8_t r = ledColors[Color].r;
+    uint8_t g = ledColors[Color].g;
+    uint8_t b = ledColors[Color].b;
+    Serial.printf("Touch#%d: (%d, %d, %d)\n", Color, r, g, b);
     fill_solid(leds, LED_COUNT, ledColors[Color]);  // fill array with Color
     FastLED.show();                                 // display array on leds
     delay(50);
