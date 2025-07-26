@@ -6,7 +6,7 @@
 
 #define LED_PIN 6         // D6 (PA07) for WS2812 LEDs
 #define LED_COUNT 50      // Total number of LEDs on strand
-#define BRIGHTNESS 100    // Adjust as needed (0-255)
+#define BRIGHTNESS 64     // Adjust as needed (0-255)
 #define LED_TYPE WS2812B  // Type of LED pixels
 #define COLOR_ORDER GRB   // Color order
 
@@ -17,28 +17,26 @@
 #define TOUCH_PIN_3 3  // D3 (PA11)
 #define TOUCH_PIN_4 4  // D4 (PA08)
 
-// Colors using RGB values directly, instead of predefined colors
-const CRGB COLOR_GREEN = CRGB(0, 204, 0);      // RGB: (0, 204, 0) - Very saturated green
-const CRGB COLOR_BLUE = CRGB(0, 102, 204);     // RGB: (0, 102, 204) - Much more saturated blue
-const CRGB COLOR_RED = CRGB(204, 0, 0);        // RGB: (204, 0, 0) - More saturated red
-const CRGB COLOR_YELLOW = CRGB(255, 255, 51);  // RGB: (255, 255, 51) - Much more saturated yellow
-const CRGB COLOR_VIOLET = CRGB(128, 0, 255);   // RGB: (128, 0, 255) - More saturated violet
-
 // Define the LED array
 CRGB leds[LED_COUNT];
 
-// Define colors for each button, 0 - 4, in order from predefined colors or
+// Define colors for each button, 0 - 4, in order, from predefined color names or triad as CRGB(200, 200, 200)
 // color names https://github.com/FastLED/FastLED/blob/master/src/crgb.h#L557
-CRGB ledColors[] = { COLOR_YELLOW, COLOR_VIOLET, COLOR_RED, COLOR_GREEN, COLOR_BLUE };
+CRGB ledColors[] = { CRGB::Yellow, CRGB::DarkViolet, CRGB::DarkRed, CRGB::DarkGreen, CRGB::DarkBlue };
 
 // Selected color and previous color
 int Color, lastColor;
+
+// track double taps
+const unsigned long DOUBLE_TAP_TIMEOUT = 1500;  // milliseconds
+unsigned long firstTapTime = 0;
+bool tap;
 
 void setup() {
   // Initialize serial and wait for port to open
   // https://docs.arduino.cc/language-reference/en/functions/communication/serial/
   Serial.begin(9600);
-  delay(250);  // wait for serial port to initialize
+  delay(2000);  // wait for serial port to initialize
   Serial.println("myMoodlight Serial Open");
 
   // Initialize FastLED library
@@ -71,26 +69,30 @@ void setup() {
   showDefaultPattern();
 }
 
-
 // Interrupt handlers for each touch pin
 void handle_0() {
   Color = 0;
+  tap = true;
 }
 
 void handle_1() {
   Color = 1;
+  tap = true;
 }
 
 void handle_2() {
   Color = 2;
+  tap = true;
 }
 
 void handle_3() {
   Color = 3;
+  tap = true;
 }
 
 void handle_4() {
   Color = 4;
+  tap = true;
 }
 
 void loop() {
@@ -103,7 +105,15 @@ void loop() {
     Serial.printf("Touch#%d: (%d, %d, %d)\n", Color, r, g, b);
     fill_solid(leds, LED_COUNT, ledColors[Color]);  // fill array with Color
     FastLED.show();                                 // display array on leds
+    tap = false;
+    firstTapTime = millis();
     delay(50);
+  } else if (Color == lastColor and tap == true) {  // new tap same color
+    if (millis() - firstTapTime < DOUBLE_TAP_TIMEOUT) {
+      Serial.println("double tap");
+      showDefaultPattern();
+    }
+    tap = false;
   }
   if (Serial.available()) {
     Serial.readString();
@@ -115,10 +125,10 @@ void loop() {
 void showDefaultPattern() {
   int splitCount = LED_COUNT / 5;  // split available leds into 5 sections
   Serial.println("Show Default Pattern");
-  fill_solid(leds, splitCount, COLOR_RED);
-  fill_solid(leds + (splitCount * 1), splitCount, COLOR_VIOLET);
-  fill_solid(leds + (splitCount * 2), splitCount, COLOR_YELLOW);
-  fill_solid(leds + (splitCount * 3), splitCount, COLOR_GREEN);
-  fill_solid(leds + (splitCount * 4), splitCount, COLOR_BLUE);
+  fill_solid(leds, splitCount, ledColors[0]);
+  fill_solid(leds + (splitCount * 1), splitCount, ledColors[1]);
+  fill_solid(leds + (splitCount * 2), splitCount, ledColors[2]);
+  fill_solid(leds + (splitCount * 3), splitCount, ledColors[3]);
+  fill_solid(leds + (splitCount * 4), splitCount, ledColors[4]);
   FastLED.show();
 }
