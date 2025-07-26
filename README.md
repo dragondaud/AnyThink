@@ -1,6 +1,8 @@
 # AnyThink
 mySummer: Mood Lamp Paintings
 
+<img title="myMoodlight" alt="myMoodlight" src="images/moodlight.jpg">
+
 Repository for https://anythinklibraries.libnet.info/event/13847358
 
 based on https://www.instructables.com/Mood-Light-That-Matches-Any-Color-You-Tap-on-the-A/
@@ -12,4 +14,4 @@ and FastLED library from https://github.com/FastLED/FastLED
 Uses https://wiki.seeedstudio.com/Seeeduino-XIAO/ microcontroller  
 Board manager URL: https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json  
 
-<img title="Soldering" alt="Soldering Diagram" src="soldering.png">
+<img title="Soldering" alt="Soldering Diagram" src="images/soldering.png">
