@@ -142,5 +142,5 @@ void showDefaultPattern() {
   fill_solid(leds + (splitCount * 4), splitCount, ledColors[4]);
   FastLED.show();
   delay(50);
-  Color = 0;
+  Color = lastColor = 0;
 }
