@@ -12,7 +12,7 @@ The Arduino programming environment, while often referred to as the [Arduino lan
 it is essentially [C++](https://isocpp.org/std/the-standard) with a set of pre-defined functions and libraries designed to simplify interaction with the hardware.
 
 ## XIAO SAMD21
-Uses [XIAO SAMD21](https://wiki.seeedstudio.com/Seeeduino-XIAO/) microcontroller  
+Uses [XIAO SAMD21](https://wiki.seeedstudio.com/Seeeduino-XIAO/) microcontroller, which features an ARM Cortex-M0+ 32bit 48MHz microcontroller with 256KB Flash and 32KB SRAM  
 Board manager URL: https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
 
 <img title="XIAO SAMD21" alt="XIAO SAMD21 pinout" src="images/XIAO-SAMD21-pinout.jpg">
