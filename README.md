@@ -1,6 +1,6 @@
 # AnyThink
-[mySummer: Mood Lamp Paintings](https://anythinklibraries.libnet.info/event/13847358)  
-based on [Mood Light That Matches Any Color You Tap on the Art](https://www.instructables.com/Mood-Light-That-Matches-Any-Color-You-Tap-on-the-A/)
+This repository for AnyThink [mySummer: Mood Lamp Paintings](https://anythinklibraries.libnet.info/event/13847358)  
+project based on [Mood Light That Matches Any Color You Tap on the Art](https://www.instructables.com/Mood-Light-That-Matches-Any-Color-You-Tap-on-the-A/)
 
 <img title="myMoodlight" alt="myMoodlight" src="images/moodlight.jpg">
 
