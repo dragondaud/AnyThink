@@ -1,6 +1,7 @@
 // myMoodlight
 // by David Denney <dragondaud@gmail.com>
 // based on project https://www.instructables.com/Mood-Light-That-Matches-Any-Color-You-Tap-on-the-A/
+// made for Arduino https://docs.arduino.cc/language-reference/
 
 #include <FastLED.h>  // https://fastled.io/
 
@@ -23,18 +24,20 @@ CRGB leds[LED_COUNT];
 // Define array of colors, for each button, 1 - 5, and 0 for default pattern
 // from predefined color names or triad as CRGB(200, 200, 200)
 // color names https://github.com/FastLED/FastLED/blob/master/src/crgb.h#L557
+// original pastel colors
+// CRGB ledColors[] = { CRGB(0, 0, 0), CRGB(255, 255, 51), CRGB(128, 0, 255), CRGB(204, 0, 0), CRGB(0, 204, 0), CRGB(0, 102, 204) };
 CRGB ledColors[] = { CRGB(0, 0, 0), CRGB::Yellow, CRGB::DarkViolet, CRGB::DarkRed, CRGB::DarkGreen, CRGB::DarkBlue };
 
-// Selected color and previous color
+// Selected color and previous color, global vars initialize to zero
 int Color, lastColor;
 
 // track double taps
 const unsigned long DOUBLE_TAP_TIMEOUT = 1500;  // milliseconds
-unsigned long firstTapTime = 0;
+unsigned long firstTapTime;
 bool tap = false;
 
 void setup() {
-  // Initialize serial and wait for port to open, for debugging
+  // Initialize serial and wait to open, for debugging
   // https://docs.arduino.cc/language-reference/en/functions/communication/serial/
   Serial.begin(9600);
   delay(2000);
@@ -110,24 +113,22 @@ void loop() {
 
     fill_solid(leds, LED_COUNT, ledColors[Color]);  // fill array with Color
     FastLED.show();                                 // display array on leds
-    tap = false;                                    // reset tap tracking
     firstTapTime = millis();                        // track tap time
     delay(50);                                      // prevent bounce
+    tap = false;                                    // reset tap tracking
 
   } else if (Color == lastColor and tap == true) {  // new tap same color
-
-    if (millis() - firstTapTime < DOUBLE_TAP_TIMEOUT) {  // second tap within timeout
+    // second tap within timeout == double tap
+    if (millis() - firstTapTime < DOUBLE_TAP_TIMEOUT) {
       Serial.println("Double tap");
       showDefaultPattern();
     }
-
     tap = false;
   }
 
   if (Serial.available()) {  // check Serial input buffer
     Serial.readString();     // read string to eol or timeout
     showDefaultPattern();    // reset to default pattern on any serial input
-    delay(50);
   }
 }
 
@@ -140,5 +141,6 @@ void showDefaultPattern() {
   fill_solid(leds + (splitCount * 3), splitCount, ledColors[3]);
   fill_solid(leds + (splitCount * 4), splitCount, ledColors[4]);
   FastLED.show();
+  delay(50);
   Color = 0;
 }
