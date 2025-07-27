@@ -6,7 +6,10 @@ project based on [Mood Light That Matches Any Color You Tap on the Art](https://
 
 ## Arduino
 Requires [Arduino IDE](https://support.arduino.cc/hc/en-us/articles/360019833020-Download-and-install-Arduino-IDE)
-and [FastLED library](https://github.com/FastLED/FastLED)
+and [FastLED library](https://github.com/FastLED/FastLED)  
+
+The Arduino programming environment, while often referred to as the [Arduino language](https://docs.arduino.cc/language-reference/),
+it is essentially [C++](https://isocpp.org/std/the-standard) with a set of pre-defined functions and libraries designed to simplify interaction with the hardware.
 
 ## XIAO SAMD21
 Uses [XIAO SAMD21](https://wiki.seeedstudio.com/Seeeduino-XIAO/) microcontroller  
