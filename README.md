@@ -5,8 +5,8 @@ project based on [Mood Light That Matches Any Color You Tap on the Art](https://
 <img title="myMoodlight" alt="myMoodlight" src="images/moodlight.jpg">
 
 ## Arduino
-Requires [Arduino IDE](https://support.arduino.cc/hc/en-us/articles/360019833020-Download-and-install-Arduino-IDE)
-and [FastLED library](https://github.com/FastLED/FastLED)  
+Requires [Arduino IDE](https://www.arduino.cc/en/software)
+and [FastLED library](https://github.com/FastLED/FastLED) installed from Library Manager  
 
 The Arduino programming environment, while often referred to as the [Arduino language](https://docs.arduino.cc/language-reference/),
 it is essentially [C++](https://isocpp.org/std/the-standard) with a set of pre-defined functions and libraries designed to simplify interaction with the hardware.
