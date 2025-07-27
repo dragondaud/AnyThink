@@ -12,7 +12,7 @@ and [FastLED library](https://github.com/FastLED/FastLED)
 Uses [XIAO SAMD21](https://wiki.seeedstudio.com/Seeeduino-XIAO/) microcontroller  
 Board manager URL: https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
 
-<img title="XIAO SAMD21" alt="XIAO SAMD21 pinout" src="https://files.seeedstudio.com/wiki/Seeeduino-XIAO/img/Seeeduino-XIAO-pinout-1.jpg">
+<img title="XIAO SAMD21" alt="XIAO SAMD21 pinout" src="images/XIAO-SAMD21-pinout.jpg">
 
 ## TTP223 Touch Sensors
 <img alt="TTP223 Touch Sensor Top" src="images/TTP223-Touch-top.jpg" height="300px">  <img alt="TTP223 Touch Sensor Bottom" src="images/TTP223-Touch-bottom.jpg" height="300px">
