@@ -21,6 +21,20 @@ Board manager URL: https://files.seeedstudio.com/arduino/package_seeeduino_board
 <img alt="TTP223 Touch Sensor Top" src="images/TTP223-Touch-top.jpg" height="300px">  <img alt="TTP223 Touch Sensor Bottom" src="images/TTP223-Touch-bottom.jpg" height="300px">
 
 ## Soldering Information
+* Soldering is a technique used in electronics to create a permanent, conductive connection between two or more metal components, such as wires or electronic components on a circuit board.
+* Soldering Iron: This tool heats the joint and melts the solder.
+* Soldering Iron Tip: The tip is the part that transfers heat to the components. Different shapes and sizes are available for various tasks.
+* Solder: A metal alloy, typically a combination of tin and lead or lead-free alternatives like tin and silver/copper. RoHS requires solder to be lead-free.
+* Flux: A cleaning agent that removes oxides and impurities from the metal surfaces, allowing the solder to adhere properly.
+* Flux can be applied as a liquid, paste (tacky flux), or be integrated into the core of the solder wire.
+* The soldering process
+  * Preparation: Clean the component leads and the soldering iron tip thoroughly to ensure proper solder adhesion.
+  * Tinning: Apply a thin layer of solder to the soldering iron tip and the component leads to improve heat transfer.
+  * Heating: Touch the soldering iron tip to both the component lead and the pad or wire simultaneously, heating them to the solder's melting point.
+  * Applying Solder: Once the surfaces are hot, touch the solder wire to the heated joint (not directly to the iron) and let it flow smoothly over the connection.
+  * Cooling and Inspection: Remove the soldering iron and allow the solder to cool and solidify without disturbing the joint.
+  * A well-soldered joint should appear shiny and have a concave or volcano shape (for through-hole components).
+
 <img title="Soldering" alt="Soldering Diagram" src="images/soldering.png">
 
 ## Wiring up myMoodlight
@@ -33,5 +47,7 @@ Board manager URL: https://files.seeedstudio.com/arduino/package_seeeduino_board
   * Connect Red TTP223 I/O (yellow) to Pin2 on SAMD21
   * Connect Green TTP223 I/O (yellow) to Pin3 on SAMD21
   * Connect Blue TTP223 I/O (yellow) to Pin4 on SAMD21
+  * Mark locations for board and sensors on back of frame
   * Connect and route USB cable out of frame
   * Tape down SAMD21 and all TTP223 sensors
+  * Route wires so they don't pass over sensors, to avoid interference
