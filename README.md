@@ -8,17 +8,17 @@ project based on [Mood Light That Matches Any Color You Tap on the Art](https://
 Requires [Arduino IDE](https://www.arduino.cc/en/software)
 and [FastLED library](https://github.com/FastLED/FastLED) installed from Library Manager  
 
-The Arduino programming environment, while often referred to as the [Arduino language](https://docs.arduino.cc/language-reference/),
-it is essentially [C++](https://isocpp.org/std/the-standard) with a set of pre-defined functions and libraries designed to simplify interaction with the hardware.
+The Arduino programming environment, while often referred to as the [Arduino language](https://docs.arduino.cc/language-reference/), 
+is essentially [C++](https://isocpp.org/std/the-standard) with a set of pre-defined functions and libraries designed to simplify interaction with the hardware.
 
 ## XIAO SAMD21
-Uses [XIAO SAMD21](https://wiki.seeedstudio.com/Seeeduino-XIAO/) microcontroller, which features an ARM Cortex-M0+ 32bit 48MHz microcontroller with 256KB Flash and 32KB SRAM  
+Project uses [XIAO SAMD21](https://wiki.seeedstudio.com/Seeeduino-XIAO/) microcontroller, which features an ARM Cortex-M0+ 32bit 48MHz microcontroller with 256KB Flash and 32KB SRAM  
 Board manager URL: https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
 
 <img title="XIAO SAMD21" alt="XIAO SAMD21 pinout" src="images/XIAO-SAMD21-pinout.jpg">
 
 ## TTP223 Touch Sensors
-<img alt="TTP223 Touch Sensor Top" src="images/TTP223-Touch-top.jpg" height="300px">  <img alt="TTP223 Touch Sensor Bottom" src="images/TTP223-Touch-bottom.jpg" height="300px">
+<img alt="TTP223 Touch Sensor Top" src="images/TTP223-Touch-top.jpg" height="320px">  <img alt="TTP223 Touch Sensor Bottom" src="images/TTP223-Touch-bottom.jpg" height="320px">
 
 ## Soldering Information
 * Soldering is a technique used in electronics to create a permanent, conductive connection between two or more metal components, such as wires or electronic components on a circuit board.
