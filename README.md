@@ -40,9 +40,9 @@ Board manager URL: https://files.seeedstudio.com/arduino/package_seeeduino_board
 
 ## Wiring up myMoodlight
   * Connect all TTP223 Touch sensor VCC pins (red) to 3v3 on SAMD21
-  * Connect all TTP223 (black) & LED (white) grounds to GND on SAMD21
+  * Connect all TTP223 & LED grounds (black) to GND on SAMD21
   * Connect LED strand +5v (red) to 5V on SAMD21
-  * Connect LED strand Din (green) to Pin 6 on SAMD21
+  * Connect LED strand Din (yellow) to Pin 6 on SAMD21
   * Connect Yellow TTP223 I/O (yellow) to Pin0 on SAMD21
   * Connect Violet TTP223 I/O (yellow) to Pin1 on SAMD21
   * Connect Red TTP223 I/O (yellow) to Pin2 on SAMD21
