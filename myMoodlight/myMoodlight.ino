@@ -135,11 +135,11 @@ void loop() {
 void showDefaultPattern() {
   int splitCount = LED_COUNT / 5;  // split available leds into 5 sections
   Serial.println("Show default pattern");
-  fill_solid(leds, splitCount, ledColors[0]);
-  fill_solid(leds + (splitCount * 1), splitCount, ledColors[1]);
-  fill_solid(leds + (splitCount * 2), splitCount, ledColors[2]);
-  fill_solid(leds + (splitCount * 3), splitCount, ledColors[3]);
-  fill_solid(leds + (splitCount * 4), splitCount, ledColors[4]);
+  fill_solid(leds, splitCount, ledColors[1]);
+  fill_solid(leds + (splitCount * 1), splitCount, ledColors[2]);
+  fill_solid(leds + (splitCount * 2), splitCount, ledColors[3]);
+  fill_solid(leds + (splitCount * 3), splitCount, ledColors[4]);
+  fill_solid(leds + (splitCount * 4), splitCount, ledColors[5]);
   FastLED.show();
   delay(50);
   Color = lastColor = 0;
