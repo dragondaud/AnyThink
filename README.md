@@ -24,16 +24,17 @@ Board manager URL: https://files.seeedstudio.com/arduino/package_seeeduino_board
 * Soldering is a technique used in electronics to create a permanent, conductive connection between two or more metal components, such as wires or electronic components on a circuit board.
 * Soldering Iron: This tool heats the joint and melts the solder.
 * Soldering Iron Tip: The tip is the part that transfers heat to the components. Different shapes and sizes are available for various tasks.
-* Solder: A metal alloy, typically a combination of tin and lead or lead-free alternatives like tin and silver/copper. RoHS requires solder to be lead-free.
+* Solder: A metal alloy, typically a combination of tin and lead or lead-free alternatives like tin and silver/copper.
+  * RoHS requires solder to be lead-free.
 * Flux: A cleaning agent that removes oxides and impurities from the metal surfaces, allowing the solder to adhere properly.
-* Flux can be applied as a liquid, paste (tacky flux), or be integrated into the core of the solder wire.
+  * Flux can be applied as a liquid, paste (tacky flux), or be integrated into the core of the solder wire.
 * The soldering process
   * Preparation: Clean the component leads and the soldering iron tip thoroughly to ensure proper solder adhesion.
   * Tinning: Apply a thin layer of solder to the soldering iron tip and the component leads to improve heat transfer.
   * Heating: Touch the soldering iron tip to both the component lead and the pad or wire simultaneously, heating them to the solder's melting point.
   * Applying Solder: Once the surfaces are hot, touch the solder wire to the heated joint (not directly to the iron) and let it flow smoothly over the connection.
   * Cooling and Inspection: Remove the soldering iron and allow the solder to cool and solidify without disturbing the joint.
-  * A well-soldered joint should appear shiny and have a concave or volcano shape (for through-hole components).
+    * A well-soldered joint should appear shiny and have a concave or volcano shape (for through-hole components).
 
 <img title="Soldering" alt="Soldering Diagram" src="images/soldering.png">
 
